@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>Hundred Heroes Tracker</title>
+<meta name="theme-color" content="#0d1120">
+<meta name="description" content="Track your Eiyuden Chronicle: Hundred Heroes recruitment progress.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <h1>✦ Hundred Heroes</h1>
+  <div class="subtitle">Eiyuden Chronicle recruitment tracker · 120 heroes</div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" id="fill"></div></div>
+    <div class="progress-count" id="count">0 / 120</div>
+  </div>
+  <div class="controls">
+    <input type="search" id="search" placeholder="Search a hero...">
+  </div>
+  <div class="controls" style="margin-top:8px;">
+    <div class="chip active" data-filter="all">All</div>
+    <div class="chip" data-filter="got">Recruited</div>
+    <div class="chip" data-filter="missing">Missing</div>
+    <div class="chip" data-filter="missable">⚠ Missable</div>
+  </div>
+</header>
+
+<main id="list"></main>
+
+<footer>
+  <div><button id="reset">Reset all progress</button></div>
+  Order follows earliest possible recruitment point. Tap a hero to mark them recruited — your progress is saved on this device.
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    });
+  }
+</script>
+</body>
+</html>
